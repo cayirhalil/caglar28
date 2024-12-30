@@ -2623,15 +2623,17 @@ img.testimonial-thumb {
 
 /*-- About us page --*/
 /* Slider pages */
+/* Carousel Control Styles */
 .page-slider .carousel-control {
   position: absolute;
   top: 50%;
-  z-index: 5;
+  z-index: 1000; /* Üstte görünmesi için artırıldı */
   display: inline-block;
+  -webkit-transform: translateY(-50%); /* Safari uyumluluğu için */
   transform: translateY(-50%);
   background-color: transparent;
   text-shadow: none;
-  transition: all 0.25s ease;
+  transition: all 0.25s linear; /* Geçiş süresi optimize edildi */
   padding: 0;
   outline: 0;
   border: 0;
@@ -2646,24 +2648,28 @@ img.testimonial-thumb {
   background: rgba(0, 0, 0, 0.3);
   color: #fff;
   line-height: 70px;
-  width: 40px;
-  height: 70px;
+  width: 50px; /* Daha büyük bir tıklanabilir alan sağlandı */
+  height: 80px;
   font-size: 22px;
   border-radius: 0;
-  transition: all 500ms ease;
+  transition: all 300ms linear; /* Daha hızlı geçiş sağlandı */
 }
 .page-slider .carousel-control i:hover {
   background: #ffb600;
   color: #fff;
 }
 
+/* Slider Item Styles */
 .page-slider.small-bg .item {
   min-height: 330px;
   background-size: cover;
+  -webkit-background-size: cover; /* Safari uyumluluğu için */
 }
 
+/* Slider Content Styles */
 .page-slider.small-bg .box-slider-content {
   left: 20%;
+  position: relative; /* Konumlandırma iyileştirildi */
 }
 
 .page-slider.small-bg .box-slider-text {
@@ -2676,6 +2682,19 @@ img.testimonial-thumb {
   color: #fff;
   font-weight: 900;
 }
+
+/* iPhone Özel Media Query */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+  .page-slider .carousel-control i {
+    width: 55px; /* iPhone için tıklanabilir alan büyütüldü */
+    height: 85px;
+  }
+
+  .page-slider.small-bg .item {
+    min-height: 350px; /* iPhone için yüksekliği optimize edildi */
+  }
+}
+
 
 /*-- Get a quote page --*/
 .page-quote-form {

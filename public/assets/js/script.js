@@ -193,55 +193,70 @@ jQuery(function ($) {
 		projectShuffle();
 
 
-		// testimonial carousel
-		function testimonialCarousel() {
-			$('.testimonial-slide').slick({
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				dots: true,
-				speed: 600,
-				arrows: false
-			});
-		}
-		testimonialCarousel();
+		// Testimonial Carousel Başlatma
+function testimonialCarousel() {
+	$('.testimonial-slide').slick({
+	  slidesToShow: 1,
+	  slidesToScroll: 1,
+	  dots: true,
+	  speed: 600,
+	  arrows: false,
+	  lazyLoad: 'ondemand', // Lazy loading kullanıyorsanız
+	});
+  
+	// Yeniden boyutlandırma durumunda pozisyonu güncelle
+	$(window).on('resize', function () {
+	  $('.testimonial-slide').slick('setPosition');
+	});
+  
+	// Başlatma kontrolü için konsola bilgi ekle
+	$('.testimonial-slide').on('init', function (event, slick) {
+	  console.log('Slick initialized.');
+	});
+  }
+  
+  $(document).ready(function () {
+	testimonialCarousel();
+  });
+  
 
 
-		// team carousel
-		function teamCarousel() {
-			$('.team-slide').slick({
-				dots: false,
-				infinite: false,
-				speed: 300,
-				slidesToShow: 4,
-				slidesToScroll: 2,
-				arrows: true,
-				prevArrow: '<button type="button" class="carousel-control left" aria-label="carousel-control"><i class="fas fa-chevron-left"></i></button>',
-				nextArrow: '<button type="button" class="carousel-control right" aria-label="carousel-control"><i class="fas fa-chevron-right"></i></button>',
-				responsive: [{
-						breakpoint: 992,
-						settings: {
-							slidesToShow: 3,
-							slidesToScroll: 3
-						}
-					},
-					{
-						breakpoint: 768,
-						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 2
-						}
-					},
-					{
-						breakpoint: 481,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1
-						}
-					}
-				]
-			});
-		}
-		teamCarousel();
+		// // team carousel
+		// function teamCarousel() {
+		// 	$('.team-slide').slick({
+		// 		dots: false,
+		// 		infinite: false,
+		// 		speed: 300,
+		// 		slidesToShow: 4,
+		// 		slidesToScroll: 2,
+		// 		arrows: true,
+		// 		prevArrow: '<button type="button" class="carousel-control left" aria-label="carousel-control"><i class="fas fa-chevron-left"></i></button>',
+		// 		nextArrow: '<button type="button" class="carousel-control right" aria-label="carousel-control"><i class="fas fa-chevron-right"></i></button>',
+		// 		responsive: [{
+		// 				breakpoint: 992,
+		// 				settings: {
+		// 					slidesToShow: 3,
+		// 					slidesToScroll: 3
+		// 				}
+		// 			},
+		// 			{
+		// 				breakpoint: 768,
+		// 				settings: {
+		// 					slidesToShow: 2,
+		// 					slidesToScroll: 2
+		// 				}
+		// 			},
+		// 			{
+		// 				breakpoint: 481,
+		// 				settings: {
+		// 					slidesToShow: 1,
+		// 					slidesToScroll: 1
+		// 				}
+		// 			}
+		// 		]
+		// 	});
+		// }
+		// teamCarousel();
 
 
 		// media popup
